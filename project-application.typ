@@ -1,19 +1,10 @@
 #import "project-application-template.typ": *
-
+#import "info.typ": *
 // Take a look at the file `template.typ` in the file panel
 // to customize this template and discover how it works.
 #show: project.with(
-  title: "凌霄宝殿建设与维护关键技术研究",
-  name: "孙悟空",
-  idnum: "202102001036",
-  major2: "筋斗云运维与保障", 
-  major1: "御马科学与技术", 
-  college: "斜月三星洞",
-  grade: "2021级", 
-  advisor: "菩提祖师",
-  jobtitle: "教授",
-  unit: "西牛贺州招生录取委员会", 
-  comments: "较好明确了毕业设计的计划和目标，研究课题具有较好的现实意义，制定了可行的实施方案，正确评估了研究过程中可能遇到的问题和相应的解决方案，文献调研充分，同意开题。"
+  ..info,
+  comments: comments
 )
 
 #show math.equation: set text(font: "TeX Gyre Termes Math")

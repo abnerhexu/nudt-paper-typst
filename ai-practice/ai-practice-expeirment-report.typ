@@ -52,7 +52,7 @@ print("Label probs:", probs)  # prints: [[0.9927937  0.00421068 0.00299572]]
   （适当的形式表达算法设计思想与算法实现步骤，注意尽量形式化表达，鼓励使用流程图、伪代码等形式）\
 
   #figure(
-    image("images/CLIP.png", height: 10em),
+    image("../images/CLIP.png", height: 10em),
     caption: "CLIP",
   ) <CLIP>
 
