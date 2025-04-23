@@ -10,14 +10,14 @@
 #show figure: it => {
     set text(size: 10.5pt)
     it
-    v(-1em)
+    v(-0.5em)
     box()
 }
 
-#show math.equation: set text(font: "TeX Gyre Termes Math")
+#show math.equation: set text(font: "TeX Gyre Termes Math", size: 12pt)
 
 #show math.equation.where(block: true): it => {
-    set text(size: 10.5pt)
+    set text(font: "TeX Gyre Termes Math", size: 12pt)
     it
     v(-1em)
     box()
@@ -27,6 +27,11 @@
   #set figure.caption(position: top)
   #it
 ]
+
+#show cite: it => {
+  set text(fill: yellow.negate(space: rgb))
+  it
+}
 // Take a look at the file `template.typ` in the file panel
 // to customize this template and discover how it works.
 #show: project.with(
