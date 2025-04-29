@@ -14,7 +14,7 @@
 ## 使用方法
 
 - Windows 用户
-  - clone 本仓库，并下载**这个版本**的 [Typst](https://github.com/typst/typst/releases/tag/v0.12.0)
+  - clone 本仓库，并下载**这个版本**(Version 0.13.1 (March 7, 2025))的 [Typst](https://github.com/typst/typst/releases/tag/v0.13.1)
   - 将 Typst 添加到环境变量
   - 安装在 `fonts/` 文件夹下的字体（用于数学公式）
   - 开始愉快地写作吧！
