@@ -1,11 +1,15 @@
-#import "@preview/cuti:0.2.1": show-cn-fakebold
+#import "@preview/cuti:0.3.0": show-cn-fakebold
 #import "templates/i-figured.typ"
 #show: show-cn-fakebold
 #let tnr = "Times New Roman"
 #let fsong = (tnr, "FangSong")
 #let song = (tnr, "SimSun")
 #let hei = (tnr, "SimHei")
+
 #let project(title: "", name: "", idnum: "", major1: "", major2: "", college: "", grade: "", advisor: "", jobtitle: "", unit:"", body) = {
+  show strong: it => {
+    show-cn-fakebold(it)
+  }
   // Set the document's basic properties.
   // set document(title: title)
   counter(page).update(0)
@@ -29,7 +33,7 @@
   v(100pt)
   align(center)[
     #grid(columns: (3.53fr, 10.82fr), row-gutter: 5pt, 
-    [#text(weight: "bold", size: 16pt)[课题名称：]], [#text(weight: "bold", font: fsong, size: 16pt)[#title]], [], [#line(length: 100%, stroke: (thickness: 0.5pt))])
+    [#text(weight: "bold", size: 16pt)[*课题名称：*]], [#show-cn-fakebold[#text(weight: "bold", font: fsong, size: 16pt)[#title]]], [], [#line(length: 100%, stroke: (thickness: 0.5pt))])
   ]
   v(73.5pt)
   // Author information.
