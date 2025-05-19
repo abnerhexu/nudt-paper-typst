@@ -6,7 +6,7 @@
 #let song = (tnr, "SimSun")
 #let hei = (tnr, "SimHei")
 
-#let project(title: "", name: "", idnum: "", major1: "", major2: "", college: "", grade: "", advisor: "", jobtitle: "", unit:"", body) = {
+#let project(title: "", name: "", idnum: "", major1: "", major2: "", college: "", grade: "", advisor: "", jobtitle: "", unit:"", blind-review: false, body) = {
   show strong: it => {
     show-cn-fakebold(it)
   }
@@ -17,7 +17,8 @@
     margin: (left: 30mm, right: 30mm, top: 30mm, bottom: 20mm),
     paper: "a4"
   )
-  set text(font: ("Times New Roman", "SimSun"), lang: "zh")
+  set text(font: ("TeX Gyre Termes Math", "SimSun"), lang: "zh")
+  show regex("[\u0025]"): set text(font: "Times LT Pro")
   // Flag (can be commented)
   // text(font: "SimHei", size: 16pt)[附件3]
   // Or 
@@ -45,9 +46,20 @@
     v(14pt),
     v(14pt),
     [#text(size: 14pt, font: song, tracking: 9pt, "学员姓名")#text(size: 14pt, font: song)[：]],
-    align(center, text(size: 14pt, font: fsong, name)),
+    context [
+      #if blind-review {
+        align(center, text(size: 14pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 14pt, font: fsong, name))
+      }],
     [#text(size: 14pt, font: song, tracking: 56pt, "学号")#text(size: 14pt, font: song)[：]],
-    align(center, text(size: 14pt, font: tnr, idnum)),
+    context [
+      #if blind-review {
+        align(center, text(size: 14pt, font: tnr, ""))
+      } else {
+        align(center, text(size: 14pt, font: tnr, idnum))
+      }
+    ],
     v(14pt),
     line(length: 100%, stroke: (thickness: 0.5pt)),
     v(14pt),
@@ -58,9 +70,21 @@
     v(14pt),
     // align(center, text(size: 14pt, font: fsong, major1)),
     [#text(size: 14pt, font: song, "首次任职专业")#text(size: 14pt, font: song)[：]],
-    align(center, text(size: 14pt, font: fsong, major2)),
+    context [
+      #if blind-review {
+        align(center, text(size: 14pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 14pt, font: fsong, major2))
+      }
+    ],
     text(size: 14pt, font: song, "学历教育专业："),
-    align(center, text(size: 14pt, font: fsong, major1)),
+    context [
+      #if blind-review {
+        align(center, text(size: 14pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 14pt, font: fsong, major1))
+      }
+    ],
     text(""),
     line(length: 100%, stroke: (thickness: 0.5pt)),
     text(""),
@@ -70,9 +94,21 @@
     v(14pt),
     v(14pt),
     [#text(size: 14pt, font: song, tracking: 9pt, "命题学院")#text(size: 14pt, font: song)[：]],
-    align(center, text(size: 14pt, font: fsong, college)),
+    context [
+      #if blind-review {
+        align(center, text(size: 14pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 14pt, font: fsong, college))
+      }
+    ],
     [#text(size: 14pt, font: song, tracking: 56pt, "年级")#text(size: 14pt, font: song)[：]],
-    align(center, text(size: 14pt, font: fsong, grade)),
+    context [
+      #if blind-review {
+        align(center, text(size: 14pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 14pt, font: fsong, grade))
+      }
+    ],
     text(""),
     line(length: 100%, stroke: (thickness: 0.5pt)),
     text(""),
@@ -82,9 +118,21 @@
     v(14pt),
     v(14pt),
     [#text(size: 14pt, font: song, tracking: 9pt, "指导教员")#text(size: 14pt, font: song)[：]],
-    align(center, text(size: 14pt, font: fsong, advisor)),
+    context [
+      #if blind-review {
+        align(center, text(size: 14pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 14pt, font: fsong, advisor))
+      }
+    ],
     [#text(size: 14pt, font: song, tracking: 56pt, "职称")#text(size: 14pt, font: song)[：]],
-    align(center, text(size: 14pt, font: fsong, jobtitle)),
+    context [
+      #if blind-review {
+        align(center, text(size: 14pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 14pt, font: fsong, jobtitle))
+      }
+    ],
     text(""),
     line(length: 100%, stroke: (thickness: 0.5pt)),
     text(""),
@@ -97,7 +145,13 @@
     text(size: 14pt, ""),
     text(size: 14pt, ""),
     [#text(size: 14pt, font: song, tracking: 9pt, "所属单位")#text(size: 14pt, font: song)[：]],
-    align(center, text(size: 14pt, font: fsong, unit)),
+    context [
+      #if blind-review {
+        align(center, text(size: 14pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 14pt, font: fsong, unit))
+      }
+    ],
     text(""),
     line(length: 100%, stroke: (thickness: 0.5pt)),
   )
@@ -312,15 +366,20 @@
   body
 
   pagebreak()
-
   heading([#text(weight: "bold")[致#h(1em)谢]], level: 7)
   v(16pt)
   set par(spacing: 12pt, leading: 1em)
 
-  text(font: song, size: 12pt)[
+  context [
+    #if blind-review {
+
+    } else {
+      text(font: song, size: 12pt)[
 时光荏苒，转眼间我的大学本科生活即将画上句号。回首这四年的点点滴滴，心中充满了无尽的感慨与思绪。在毕业论文完成之际，我愿将这四年的经历与感悟凝聚成文字，向求学路上给予我帮助的师长和亲友表达我最真挚的谢意。
 
 师恩如海，深不可测。首先，我要特别感谢我的导师菩提教授。从初入大学时的懵懂无知，到如今能够独立完成毕业设计，菩老师始终是我前行路上的明灯。他不仅在学术上给予我悉心的指导，帮助我拓宽视野，提升能力，还在生活中给予我无微不至的关怀，让我感受到如家人般的温暖。在这次毕业设计的过程中，从选题到实验，从撰文到定稿，菩老师的全程指导让我受益匪浅。每一次对实验结果的精益求精，每一次对论文的反复修改，都让我深刻体会到菩老师在科研工作中的严谨态度和对学生的严格要求。在师门的四年时光里，菩老师不仅传授给我学术知识，更教会了我踏实、认真、负责、勤勉的品质，这些品质将伴随我一生，无论是在科研还是其他工作中，甚至在日常生活中。在此论文完成之际，我衷心感谢菩老师一路以来的教导、呵护与关怀。
+  ]
+    }
   ]
 
   pagebreak()
