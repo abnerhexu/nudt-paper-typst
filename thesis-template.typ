@@ -6,7 +6,7 @@
 #let song = (tnr, "SimSun")
 #let hei = (tnr, "SimHei")
 
-#let project(title: "", name: "", idnum: "", major1: "", major2: "", college: "", grade: "", advisor: "", jobtitle: "", unit:"", blind-review: false, body) = {
+#let project(title: "", name: "", idnum: "", major1: "", major2: "", college: "", grade: "", advisor: "", jobtitle: "", unit:"", sn: "", paper-type: "公开", blind-review: false, body) = {
   show strong: it => {
     show-cn-fakebold(it)
   }
@@ -22,7 +22,14 @@
   // Flag (can be commented)
   // text(font: "SimHei", size: 16pt)[附件3]
   // Or 
-  v(16pt)
+  v(-16pt)
+  context [
+    #if blind-review {
+      grid(columns: (1fr, 1fr), [#align(left)[#show-cn-fakebold[#text(font: song, size: 14pt)[编号：#underline(extent: 1em, offset: 3pt, stroke: (thickness: 0.5pt))[#h(1em)#text("                                     ")#h(1em)]]]]], [#align(right)[#show-cn-fakebold[#text(font: song, size: 14pt)[密级：#underline(extent: 2em, offset: 3pt, stroke: (thickness: 0.5pt))[#h(2em)公开#h(2em)]]]]])
+    } else {
+      grid(columns: (1fr, 1fr), [#align(left)[#show-cn-fakebold[#text(font: song, size: 14pt)[编号：#underline(extent: 1em, offset: 3pt, stroke: (thickness: 0.5pt))[#h(1em)#sn#h(1em)]]]]], [#align(right)[#show-cn-fakebold[#text(font: song, size: 14pt)[密级：#underline(extent: 2em, offset: 3pt, stroke: (thickness: 0.5pt))[#h(2em)#paper-type#h(2em)]]]]])
+    }
+  ]
   // Space
   v(69pt)
   v(20pt)
