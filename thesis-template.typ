@@ -1,5 +1,6 @@
 #import "@preview/cuti:0.3.0": show-cn-fakebold
 #import "templates/i-figured.typ"
+#import "templates/bilingual-bibliography.typ": bilingual-bibliography
 #show: show-cn-fakebold
 #let tnr = "Times New Roman"
 #let fsong = (tnr, "FangSong")
@@ -393,5 +394,7 @@
   align(center)[#text(size: 16pt, font: hei)[参考文献]]
   v(16pt)
   set text(size: 10.5pt)
-  bibliography("references.bib", style: "gb-7714-2015-numeric", title:none)
+  bilingual-bibliography(
+      bibliography("references.bib", style: "templates/gb-t-7714-2015-numeric.csl", title:none)
+  )
 }
