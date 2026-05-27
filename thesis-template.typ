@@ -179,7 +179,7 @@
   v(1em)
   context[#align(center)[#text(
     font: (
-      // "FZXiaoBiaoSong-B05S", 
+      "FZXiaoBiaoSong-B05S", 
       "SimSun"), 
     size: 18pt)[学术诚信承诺书]]]
   set par(leading: 1.8em, spacing: 1.8em)
