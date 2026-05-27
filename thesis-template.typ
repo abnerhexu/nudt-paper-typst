@@ -201,12 +201,8 @@
     // text(size: 12pt, ""),
     [#text(size: 12pt, font: fsong, "毕业设计（论文）题目：")],
     context [
-      #if blind-review {
-        align(center, text(size: 12pt, font: fsong, ""))
-      } else {
-        set par(justify: true)
-        align(center, text(size: 12pt, font: fsong, title))
-      }
+        #set par(justify: true)
+        #align(center, text(size: 12pt, font: fsong, title))
     ],
     // text(""),
     text(""),
