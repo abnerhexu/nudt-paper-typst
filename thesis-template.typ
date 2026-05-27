@@ -173,6 +173,108 @@
     National Academy of Sciences
   ]
 })
+
+
+// 学术诚信承诺书
+  v(1em)
+  context[#align(center)[#text(
+    font: (
+      "FZXiaoBiaoSong-B05S", 
+      "SimSun"), 
+    size: 18pt)[学术诚信承诺书]]]
+  set par(leading: 1.8em, spacing: 1.8em)
+  context[
+    #text(font: fsong, size: 12pt)[
+    \
+    #h(2em)本人郑重承诺所呈交的毕业设计（论文）是我本人在指导教员指导下开展的研究工作及取得的研究成果。除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表和撰写过的研究成果，毕业设计（论文）工作过程中没有伪造数据等行为。
+
+    #h(2em)本人授权国防科技大学可以保留并向国家有关部门或机构送交毕业设计（论文）的复印件和电子文档，允许毕业设计（论文）被查阅和借阅；可以将毕业设计（论文）的全部或部分内容编入有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存、汇编毕业论文。
+    \
+    \
+    ]
+  ]
+  set par(leading: 1em)
+  grid(
+    columns: (11fr, 24fr),
+    // rows: (12pt, 2pt),
+    row-gutter: 5pt,
+    // text(size: 12pt, ""),
+    [#text(size: 12pt, font: fsong, "毕业设计（论文）题目：")],
+    context [
+        #set par(justify: true)
+        #align(center, text(size: 12pt, font: fsong, title))
+    ],
+    // text(""),
+    text(""),
+    line(length: 100%, stroke: (thickness: 0.5pt)),
+  )
+  grid(
+    columns: (7fr, 9fr, 5fr, 3fr, 3fr, 1fr, 2fr, 1fr, 2fr, 1fr),
+    rows: (12pt, 14pt, 9pt, 12pt, 14pt),
+    text(size: 12pt, font: fsong, "作"+h(2em)+"者签名："),
+    context [
+      #if blind-review {
+        align(center, text(size: 12pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 12pt, font: fsong, name))
+      }],
+    text(""),
+    [#text(size: 12pt, font: fsong, "日期：")],
+    [#if blind-review {
+        align(center, text(size: 12pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 12pt, font: fsong, datetime.today().display("[year]")))
+      }],
+    [#text(size: 12pt, font: fsong, "年")],
+    [#if blind-review {
+        align(center, text(size: 12pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 12pt, font: fsong, datetime.today().display("[month padding:none]")))
+      }],
+    [#text(size: 12pt, font: fsong, "月")],
+    [#if blind-review {
+        align(center, text(size: 12pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 12pt, font: fsong, datetime.today().display("[day padding:none]")))
+      }],
+    [#text(size: 12pt, font: fsong, "日")],
+    
+    v(12pt),
+    line(length: 100%, stroke: (thickness: 0.5pt)),
+    v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),v(12pt),
+    text(size: 12pt, font: fsong, "指导教员签名："),
+    context [
+      #if blind-review {
+        align(center, text(size: 12pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 12pt, font: fsong, advisor))
+      }],
+    text(""),
+    [#text(size: 12pt, font: fsong, "日期：")],
+    [#if blind-review {
+        align(center, text(size: 12pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 12pt, font: fsong, datetime.today().display("[year]")))
+      }],
+    [#text(size: 12pt, font: fsong, "年")],
+    [#if blind-review {
+        align(center, text(size: 12pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 12pt, font: fsong, datetime.today().display("[month padding:none]")))
+      }],
+    [#text(size: 12pt, font: fsong, "月")],
+    [#if blind-review {
+        align(center, text(size: 12pt, font: fsong, ""))
+      } else {
+        align(center, text(size: 12pt, font: fsong, datetime.today().display("[day padding:none]")))
+      }],
+    [#text(size: 12pt, font: fsong, "日")],
+    
+    v(12pt),
+    line(length: 100%, stroke: (thickness: 0.5pt)),
+  )
+
+
   // Main body.
   // show par: set block(spacing: 6pt) // for older typst version
   set page(header: [
@@ -213,14 +315,14 @@
     // [#prefix #it.page()]
     // v(0.5em)
     // let cname = seq.remove(0)
-    [#h(2em)#prefix#h(1em)#it.element.body #box(width: 1fr, it.fill) #it.page()
+    link(it.element.location())[#h(2em)#prefix#h(1em)#it.element.body #box(width: 1fr, it.fill) #it.page()
     ]
   }
   show outline.entry.where(level: 6): it => {
     set par(first-line-indent: 0em)
     preface-outline.update(true)
     let ebody = it.element.body
-    [#text(weight: "regular")[#it.element.body] #box(width: 1fr, it.fill) #it.page()
+    link(it.element.location())[#text(weight: "regular")[#it.element.body] #box(width: 1fr, it.fill) #it.page()
     
     ]
     preface-outline.update(false)
@@ -229,7 +331,7 @@
     set par(first-line-indent: 0em)
     let loc = it.element.location()
     let page_n = loc.page-numbering()
-    [#it.element.body #box(width: 1fr, it.fill) #it.page()
+    link(it.element.location())[#it.element.body #box(width: 1fr, it.fill) #it.page()
     
     ]
   }
@@ -238,7 +340,7 @@
     let ele = it.body()
     let seq = it.element
     // let cname = seq.remove(0)
-    [第#it.prefix() 章#h(1em)#ele #box(width: 1fr, it.fill) #it.page()
+    link(it.element.location())[第#it.prefix() 章#h(1em)#ele #box(width: 1fr, it.fill) #it.page()
     
     ]
   }
@@ -248,7 +350,7 @@
     let seq = it.element.numbering
     // let cname = seq.remove(0)
     let prefix = it.prefix()
-    [#h(1em)#prefix#h(1em)#it.element.body #box(width: 1fr, it.fill) #it.page()
+    link(it.element.location())[#h(1em)#prefix#h(1em)#it.element.body #box(width: 1fr, it.fill) #it.page()
     ]
   }
   outline(title: "", indent: 1em)
